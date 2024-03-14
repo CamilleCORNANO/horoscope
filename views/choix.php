@@ -1,21 +1,13 @@
 <html>
-    <form method="POST" action="!index.php">
+    <form method="POST" action="!index.php?action=reponse">
         <p>
-            <label for="pays">Quel est votre signe astrologique ?</label><br />
+            <label for="signe">Quel est votre signe astrologique ?</label><br />
                 <select name="signe" id="signe">
-                    <option value="belier"> Bélier </option>
-                    <option value="taureau"> Taureau </option>
-                    <option value="gemeaux"> Gémeaux </option>
-                    <option value="cancer"> Cancer </option>
-                    <option value="lion"> Lion </option>
-                    <option value="vierge"> Vierge </option>
-                    <option value="balance">Balance </option>
-                    <option value="scorpion"> Scorpion </option>
-                    <option value="sagittaire"> Sagittaire </option>
-                    <option value="capricorne"> Capricorne </option>
-                    <option value="verseau"> Verseau </option>
-                    <option value="poissons"> Poissons </option>
+                    <?php foreach(signe() as $k => $v  ):  ?>             
+                    <option value="<?= $k ?>"> <?= $k ?> </option>
+                   <?php endforeach ?>
                     </select>
         <input type="submit" value="Envoyer" />    
-    </form> 
+    </form> </br>
+    <a href="views/!index.php?action= "> Administrer </a>
 </html>
