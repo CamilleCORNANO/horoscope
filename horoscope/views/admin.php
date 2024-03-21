@@ -1,11 +1,9 @@
-<?php
-include '../modele/data.php' ;
-?>
-<?php foreach($signe as $k => $v  ):  ?>  
-<form method="POST" action="controllers/controller.php?action=modifier">
+
+<?php foreach(signe() as $k => $v  ):  ?>  
+<form method="POST" action="!index.php?action=modifier">
     <label for="signe"> <?= $k ?> </label>
-    <input type="text" placeholder="<?= $v?>">  </input><br/>
-   <?php endforeach ?>
+    <input type="text" placeholder="<?= $v?>" name="<?= $k ?>">  </input><br/>
+   <?php endforeach ; ?>
    <input type="submit" value="OK" />
 </form>
     

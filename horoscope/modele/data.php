@@ -1,6 +1,6 @@
 <?php
 
-
+function signe() {
 $signe = array(
     "belier" => "Vous devrez faire des efforts sérieux pour acquerir un bon niveau.", 
     "taureau" => "Une de vos plus grandes qualités est la capacité à saisir les théories.", 
@@ -11,26 +11,35 @@ $signe = array(
     "balance" => "Vous avez une forte tendance à choisir les solutions astucieuses",
     "scorpion" => "Renoncez à imposer vos propres données et appliquez les méthodes apprises",
     "sagittaire" => "Pardonnez avec aisance et sans amubiguïté, mais n'acceptez aucun extrême.",
-    "capricorne" => "ne certaine facilité ne doit pas vous detourner de l'objectif.",
-    "verseau" => "Ce travail vous demandera beaucoup d,'ingéniosité.",
+    "capricorne" => "Une certaine facilité ne doit pas vous detourner de l'objectif.",
+    "verseau" => "Ce travail vous demandera beaucoup d'ingéniosité.",
     "poissons" => "Votre esprit vif et limpide facilite la résolution des problèmes."
-) ;
-
-$connection = array(
-    "toto" => "1234"
-) ;
-
-
-/*function connexion (login, mdp) {
-    $logged = False
-    return $connexion
-}
-}
-    function signe() {
-    
     ) ;
-    return $signe;}
-    */
-    
-    
+return $signe;}
+
+function connexion() {
+    $logged = False ;
+    $connexion = array(
+        "toto" => "1234"
+    ) ;
+    return $connexion;
+}
+
+function connexionBDD() {
+    $serveur='mysql:host=localhost';
+    $bdd='dbname=blog_db';
+    $user="root";
+    $mdp="";
+    try{
+        $db = new PDO($serveur.';'.$bdd, $user, $mdp);
+        $db->query("SET CHARACTER SET utf8");
+        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $db;
+        
+    }
+
+}
+//var_dump(signe(), connexion());
+
     
