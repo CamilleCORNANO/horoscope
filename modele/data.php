@@ -16,15 +16,39 @@ $signe = array(
     "poissons" => "Votre esprit vif et limpide facilite la résolution des problèmes."
     ) ;
 return $signe;}
-
-function connexion() {
-    $logged = False ;
-    $connexion = array(
-        "toto" => "1234"
-    ) ;
-    return $connexion;
+function GetDataSigne() {
+    $sql="SELECT * FROM astrologie";
+    return executerRequete($sql)->fetchAll() ;
 }
-    
+function connexion($login, $mdp) {
+    $sql = "SELECT COUNT(*) FROM connexion WHERE login='$login' AND mdp = '$mdp'";
+    return executerRequete($sql)->fetchAll();
+}
+
+function connexionBDD() {
+    $serveur='mysql:host=localhost';
+    $bdd='dbname=horoscope';
+    $user="root";
+    $mdp="";
+    try{
+        $db = new PDO($serveur.';'.$bdd, $user, $mdp);
+        $db->query("SET CHARACTER SET utf8");
+        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $db;
+    }catch(Exception $e) {
+        echo "Impoossible de se connecter à la base";
+        echo $e->getMessage();
+            die();
+    }       
+}
+function executerRequete($sql, $params = null) {
+    if ($params == null) {
+        $resultat = connexionBDD()->query($sql);;
+    }
+    return $resultat;
+}
+
 //var_dump(signe(), connexion());
 
     

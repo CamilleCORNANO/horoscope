@@ -1,18 +1,22 @@
 <?php
 include 'data.php' ;
-function getConnexion ($login, $mdp) {
+/*function getConnexion ($login, $mdp) {
     for ($i = 0; $i <= count(connexion()); $i++) {
         if ($login == key(connexion()[$i]) && $mdp == connexion()[$i]) {
             return True ;
         }
     }
-}
+}*/
 function getLesSignes() {
-    return signe();
+    $tab = GetDataSigne();
+    foreach ($tab as $k) {
+        $signes  [$k["signe"]] = $k["horoscope"];
+    }       
+    return $signes;
 }
     
 function GetLeSigne($signeuser) {
-    return signe()[$signeuser];
+    return getLesSignes()[$signeuser];
 }
     /* On a dit qu'il fallait copier le code du controlleur mais ce que j'ai fait en haut semble fonctionnel. 
     $login = $_REQUEST['login'] ;

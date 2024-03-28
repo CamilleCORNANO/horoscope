@@ -5,29 +5,29 @@ switch($action)
     case 'reponse' :
         {
             $signeuser = $_REQUEST['signe'] ;
-            echo signe()[$signeuser] ;
+            $tab=GetLesSignes();
+            echo $tab[$signeuser] ;
             break ;
         }
     case 'connexion' :
         {
             $login = $_REQUEST['login'] ;
             $pw = $_REQUEST['pw'] ;
-            foreach (connexion() as $k => $v) {
-                if ($_REQUEST['login'] == $k && $_REQUEST['pw'] == $v) {
+            if (connexion($login, $pw) == 1) {
                     include 'views/choix.php' ;
+                } else {
+                    include 'views/connexion.php';
                 }
-            }
             break ;
         }
     case 'administrer' :
         {
-             //FINIS CA PWEASE
+            include "views/admin.php";
+            break ;
         }
+        
     case 'modifier' :
         {
-            for ($s = 0; $s <= 12; $s++) {
-                signe()[$s] = $_POST[key(signe()[$s])] ;
-            }
             include 'views/choix.php' ;
             break ;
         }

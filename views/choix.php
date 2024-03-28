@@ -9,5 +9,5 @@
                     </select>
         <input type="submit" value="Envoyer" />    
     </form> </br>
-    <a href="views/!index.php?action= "> Administrer </a>
+    <a href="!index.php?action=administrer"> Administrer </a>
 </html>
